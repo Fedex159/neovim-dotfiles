@@ -1,2 +1,3 @@
-# neovim-dotfiles
-My personal config for Neovim
+# Description
+
+This are my personal config for Neovim.
