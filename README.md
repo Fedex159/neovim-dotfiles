@@ -1,5 +1,7 @@
 # Neovim Dotfiles
 
+<img src='./images/start_screen.png' alt='start_screen' />
+
 ## Description
 
 This are my personal config for Neovim, is based on <a href='https://www.youtube.com/watch?v=ajmK0ZNcM4Q&t'>devaslife</a> config.
