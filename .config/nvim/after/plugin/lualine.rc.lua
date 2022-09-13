@@ -4,7 +4,7 @@ if (not status) then return end
 lualine.setup {
   options = {
     icons_enable = true,
-    theme = 'onedark',
+    theme = 'onedarkpro',
     section_separators = { left = '', right = '' },
     component_separators = { left = '', right = '' },
     disable_filetypes = {}
