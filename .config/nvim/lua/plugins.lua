@@ -13,6 +13,7 @@ packer.startup(function(use)
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use 'hoob3rt/lualine.nvim' -- Statusline
   use 'L3MON4D3/LuaSnip' -- Snippet
+  use 'rafamadriz/friendly-snippets'
   use 'williamboman/mason.nvim' -- Mason
   use 'williamboman/mason-lspconfig.nvim' -- Mason LSP
   use 'onsails/lspkind-nvim' -- vscode like pcitograms
