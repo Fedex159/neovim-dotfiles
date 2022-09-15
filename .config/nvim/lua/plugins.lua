@@ -43,12 +43,6 @@ packer.startup(function(use)
 
   use 'lewis6991/gitsigns.nvim'
   use {
-    'tanvirtin/vgit.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    }
-  }
-  use {
     'TimUntersberger/neogit',
     requires = {
       'nvim-lua/plenary.nvim',
