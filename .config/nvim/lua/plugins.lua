@@ -48,5 +48,12 @@ packer.startup(function(use)
       'nvim-lua/plenary.nvim'
     }
   }
+  use {
+    'TimUntersberger/neogit',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'sindrets/diffview.nvim'
+    }
+  }
 
 end)
