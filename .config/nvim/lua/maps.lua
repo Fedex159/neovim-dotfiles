@@ -34,3 +34,7 @@ keymap.set('n', '<A-S-left>', '<C-w><')
 keymap.set('n', '<A-S-right>', '<C-w>>')
 keymap.set('n', '<A-S-up>', '<C-w>+')
 keymap.set('n', '<A-S-down>', '<C-w>-')
+
+-- Move lines
+vim.api.nvim_set_keymap('v', '<S-down>', ":m '>+1<CR>gv=gv", { noremap = true })
+vim.api.nvim_set_keymap('v', '<S-up>', ":m '<-2<CR>gv=gv", { noremap = true })
