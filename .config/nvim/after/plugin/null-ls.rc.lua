@@ -1,6 +1,7 @@
 local status, null_ls = pcall(require, 'null-ls')
 if (not status) then return end
 
+---@diagnostic disable-next-line: redundant-parameter
 null_ls.setup {
   on_attach = function(client, bufnr)
     if client.server_capabilities.documentFormattingProvider then
@@ -16,6 +17,7 @@ null_ls.setup {
       diagnostics_format = '[eslint] #{m}\n(#{c})'
     }),
     null_ls.builtins.code_actions.eslint_d,
-    null_ls.builtins.diagnostics.fish
+    null_ls.builtins.diagnostics.zsh,
+    null_ls.builtins.completion.luasnip
   }
 }
