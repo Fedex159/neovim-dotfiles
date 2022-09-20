@@ -50,4 +50,6 @@ packer.startup(function(use)
     }
   }
 
+  use 'rmagatti/auto-session' -- auto-session
+
 end)
