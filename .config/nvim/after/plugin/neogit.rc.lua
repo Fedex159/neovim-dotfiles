@@ -7,5 +7,6 @@ neogit.setup {
   }
 }
 
-vim.keymap.set('n', '<leader>gd', '<cmd>Neogit<cr>')
-vim.keymap.set('n', '<leader>dc', '<cmd>DiffviewClose<cr>')
+vim.keymap.set('n', '<leader>nc', ':Neogit commit<Return>')
+vim.keymap.set('n', '<leader>dv', ':DiffviewOpen<Return>')
+vim.keymap.set('n', '<leader>dc', ':DiffviewClose<Return>')
