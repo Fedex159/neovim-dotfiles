@@ -1,10 +1,12 @@
 local status, bufferline = pcall(require, 'bufferline')
 if (not status) then return end
 
-local status2, colors = pcall(require, 'onedarkpro')
-if (not status2) then return end
-local c = colors.get_colors(vim.g.onedarkpro_theme)
-
+local colors = {
+  bg = '#1C1F24',
+  fg = '#657b83',
+  fill = '#0D0E10',
+  blue = '#61afef'
+}
 
 bufferline.setup {
   options = {
@@ -21,22 +23,25 @@ bufferline.setup {
   },
   highlights = {
     separator = {
-      fg = '#0D0E10',
-      bg = '#1C1F24',
+      fg = colors.fill,
+      bg = colors.bg,
     },
     separator_selected = {
-      fg = '#0D0E10',
+      fg = colors.fill,
     },
     background = {
-      fg = '#657b83',
-      bg = '#1C1F24',
+      fg = colors.fg,
+      bg = colors.bg,
     },
     buffer_selected = {
-      fg = c.blue,
+      fg = colors.blue,
       bold = true,
     },
     fill = {
-      bg = '#0D0E10'
+      bg = colors.fill
+    },
+    error = {
+      bg = colors.bg,
     }
   },
 }
