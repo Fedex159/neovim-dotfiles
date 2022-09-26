@@ -42,6 +42,9 @@ bufferline.setup {
     },
     error = {
       bg = colors.bg,
+    },
+    warning = {
+      bg = colors.bg,
     }
   },
 }
