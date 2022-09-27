@@ -51,7 +51,7 @@ packer.startup(function(use)
   use 'windwp/nvim-ts-autotag'
 
   -- Utilities
-  use 'nvim-lua/plenary.nvim' -- Common utilities
+  use 'nvim-lua/plenary.nvim'
 
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
@@ -68,6 +68,7 @@ packer.startup(function(use)
       'sindrets/diffview.nvim'
     }
   }
+  use { 'akinsho/git-conflict.nvim', tag = 'v1.0.0' }
 
   -- Auto session
   use 'rmagatti/auto-session'
