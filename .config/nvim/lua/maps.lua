@@ -41,3 +41,10 @@ keymap.set('v', '<S-up>', ":m '<-2<CR>gv=gv", { noremap = true })
 
 -- Paste when replace
 keymap.set('v', '<leader>p', '\"_dP')
+
+-- Convert word to string
+keymap.set('v', '<leader>s', ":s/\\(\\w.*\\)/'\\1'<CR> | :noh<CR>", { silent = true })
+keymap.set('v', '<leader>S', ":s/\\(\\w.*\\)/'\\1'")
+
+-- Clear search
+keymap.set('n', '<leader>c', ':noh<CR>', { silent = true })
