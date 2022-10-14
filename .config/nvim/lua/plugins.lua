@@ -11,8 +11,9 @@ packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Theme
-  use 'olimorris/onedarkpro.nvim'
+  --[[ use 'olimorris/onedarkpro.nvim' ]]
   use 'kyazdani42/nvim-web-devicons'
+  use 'Shatur/neovim-ayu'
 
   -- Lsp and completion
   use 'glepnir/lspsaga.nvim' -- LSP UIs

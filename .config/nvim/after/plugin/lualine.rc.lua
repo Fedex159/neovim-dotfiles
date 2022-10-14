@@ -18,7 +18,7 @@ local colors = {
 lualine.setup {
   options = {
     icons_enable = true,
-    theme = 'onedarkpro',
+    theme = 'ayu',
     section_separators = { left = '', right = '' },
     component_separators = { left = '', right = '' },
     disable_filetypes = {}
