@@ -11,7 +11,8 @@ This are my personal config for Neovim, is based on <a href='https://www.youtube
 - Neovim >= 0.7
 - NPM
 - Brew (mac os)
-- Nerd fonts (MesloLGS NF used)
+- JetBrains Mono Regular Nerd Font Complete Mono (fonts folder)
+- Terminal kitty
 
 ## Installation
 
@@ -25,20 +26,20 @@ $ brew install tree-sitter
 $ brew install ripgrep
 $ npm i -g typescript-language-server
 $ npm i -g eslint_d
-$ npm install -g @fsouza/prettierd
+$ npm i -g @fsouza/prettierd
 ```
 
 ### Linux (Fedora)
 
 ```
-$ dnf install nvim
+$ sudo dnf install nvim
 $ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-$ dnf install tree-sitter-cli
-$ dnf install ripgrep
-$ npm i -g typescript-language-server
-$ npm i -g eslint_d
-$ npm install -g @fsouza/prettierd
+$ sudo dnf install tree-sitter-cli
+$ sudo dnf install ripgrep
+$ sudo npm i -g typescript-language-server
+$ sudo npm i -g eslint_d
+$ sudo npm i -g @fsouza/prettierd
 ```
 
 
