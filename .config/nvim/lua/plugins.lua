@@ -44,9 +44,6 @@ packer.startup(function(use)
   use 'numToStr/Comment.nvim' -- Easily comment stuff
   use 'JoosepAlviste/nvim-ts-context-commentstring'
 
-  -- Formatting
-  use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in
-
   -- Autopairs
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'

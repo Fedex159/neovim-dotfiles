@@ -45,7 +45,10 @@ bufferline.setup {
     },
     warning = {
       bg = colors.bg,
-    }
+    },
+    hint = {
+      bg = colors.bg,
+    },
   },
 }
 
