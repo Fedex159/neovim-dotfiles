@@ -48,3 +48,7 @@ keymap.set('v', '<leader>S', ":s/\\(\\w.*\\)/'\\1'")
 
 -- Clear search
 keymap.set('n', '<leader>c', ':noh<CR>', { silent = true })
+
+-- Quick replace
+keymap.set('n', '<leader>x', '*``cgn');
+keymap.set('n', '<leader>X', '*``cgN');
