@@ -52,3 +52,6 @@ keymap.set('n', '<leader>c', ':noh<CR>', { silent = true })
 -- Quick replace
 keymap.set('n', '<leader>x', '*``cgn');
 keymap.set('n', '<leader>X', '*``cgN');
+
+-- Fix toogle comments
+keymap.set("v", "<leader>gc", ":s/{\\/\\* // | '<,'>s/ \\*\\/}//<cr> | :noh<cr>", { silent = true })
