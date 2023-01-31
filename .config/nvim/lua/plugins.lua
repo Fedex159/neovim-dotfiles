@@ -71,4 +71,10 @@ packer.startup(function(use)
   -- Auto session
   use 'rmagatti/auto-session'
 
+  -- Markdown viewer
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
+
 end)
