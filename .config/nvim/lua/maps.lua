@@ -11,7 +11,7 @@ keymap.set('n', '-', '<C-x>')
 keymap.set('n', 'dw', 'vb"_d')
 
 -- Select all
-keymap.set('n', '<C-a>', 'gg<S-v>G')
+keymap.set('n', '<Leader>a', 'gg<S-v>G')
 
 -- New tab
 keymap.set('n', 'te', ':tabedit<Return>', { silent = true })
@@ -30,10 +30,10 @@ keymap.set('', 'sj', '<C-w>j')
 keymap.set('', 'sl', '<C-w>l')
 
 -- Resise window
-keymap.set('n', '<A-S-left>', '<C-w><')
-keymap.set('n', '<A-S-right>', '<C-w>>')
-keymap.set('n', '<A-S-up>', '<C-w>+')
-keymap.set('n', '<A-S-down>', '<C-w>-')
+keymap.set('n', '<C-A>', '<C-w><')
+keymap.set('n', '<C-D>', '<C-w>>')
+keymap.set('n', '<C-W>', '<C-w>+')
+keymap.set('n', '<C-S>', '<C-w>-')
 
 -- Move lines
 keymap.set('v', '<S-down>', ":m '>+1<CR>gv=gv", { noremap = true })
