@@ -18,7 +18,8 @@ ts.setup {
     "lua",
     "typescript",
     "javascript",
-    "markdown"
+    "markdown",
+    "markdown_inline"
   },
   autotag = {
     enable = true,
