@@ -34,7 +34,8 @@ telescope.setup {
             vim.cmd('startinsert')
           end
         }
-      }
+      },
+      git_status = false,
     }
   }
 }
