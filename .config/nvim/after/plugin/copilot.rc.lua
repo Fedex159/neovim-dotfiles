@@ -10,7 +10,7 @@ copilot.setup({
       jump_next = "]]",
       accept = "<CR>",
       refresh = "gr",
-      open = "<M-CR>"
+      open = "<C-CR>"
     },
     layout = {
       position = "right", -- | top | left | right
@@ -22,12 +22,12 @@ copilot.setup({
     auto_trigger = true,
     debounce = 75,
     keymap = {
-      accept = "<M-l>",
+      accept = "<C-l>",
       accept_word = false,
       accept_line = false,
-      next = "<M-]>",
-      prev = "<M-[>",
-      dismiss = "<C-]>",
+      next = "<C-]>",
+      prev = "<C-[>",
+      dismiss = "<C-\\>",
     },
   },
 });
