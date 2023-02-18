@@ -1,80 +1,84 @@
-local status, packer = pcall(require, 'packer')
+-- install lazy
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+local status, lazy = pcall(require, 'lazy')
 if (not status) then
-  print("Packer is not installed")
-  return
+  print('Lazy is not installed')
 end
 
-vim.cmd [[packadd packer.nvim]]
-
-packer.startup(function(use)
-  -- Plugin manager
-  use 'wbthomason/packer.nvim'
-
+local plugins = {
   -- Theme
-  --[[ use 'olimorris/onedarkpro.nvim' ]]
-  use 'kyazdani42/nvim-web-devicons'
-  use 'Shatur/neovim-ayu'
+  { 'nvim-tree/nvim-web-devicons',
+    commit = 'd7f598ed63a66d6dce1117c61b0d5ba71b7c45e8'
+  },
+  { 'Shatur/neovim-ayu' },
 
   -- Lsp and completion
-  use 'glepnir/lspsaga.nvim' -- LSP UIs
-  use 'onsails/lspkind-nvim' -- vscode like pcitograms
-  use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
-  use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
-  use 'hrsh7th/nvim-cmp' -- Completion
-  use 'neovim/nvim-lspconfig' -- LSP
-  use 'williamboman/mason.nvim' -- Mason
-  use 'williamboman/mason-lspconfig.nvim' -- Mason LSP
-  use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions and more via Lua
+  { 'glepnir/lspsaga.nvim' }, -- LSP UIs
+  { 'onsails/lspkind-nvim' }, -- vscode like pcitograms
+  { 'hrsh7th/cmp-buffer' }, -- nvim-cmp source for buffer words
+  { 'hrsh7th/cmp-nvim-lsp' }, -- nvim-cmp source for neovim's built-in LSP
+  { 'hrsh7th/nvim-cmp' }, -- Completion
+  { 'neovim/nvim-lspconfig' }, -- LSP
+  { 'williamboman/mason.nvim' }, -- Mason
+  { 'williamboman/mason-lspconfig.nvim' }, -- Mason LSP
+  { 'jose-elias-alvarez/null-ls.nvim' }, -- Use Neovim as a language server to inject LSP diagnostics, code actions and more via Lua
 
   -- Statusline and tabs
-  use 'hoob3rt/lualine.nvim'
-  use 'akinsho/nvim-bufferline.lua'
+  { 'hoob3rt/lualine.nvim' },
+  { 'akinsho/nvim-bufferline.lua' },
 
   -- Snippets
-  use 'L3MON4D3/LuaSnip'
-  use 'rafamadriz/friendly-snippets'
+  { 'L3MON4D3/LuaSnip' },
+  { 'rafamadriz/friendly-snippets' },
 
   -- Treesitter
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
+  { 'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate'
+  },
 
   -- Comments
-  use 'numToStr/Comment.nvim' -- Easily comment stuff
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
+  { 'numToStr/Comment.nvim' }, -- Easily comment stuff
+  { 'JoosepAlviste/nvim-ts-context-commentstring' },
 
   -- Autopairs
-  use 'windwp/nvim-autopairs'
-  use 'windwp/nvim-ts-autotag'
+  { 'windwp/nvim-autopairs' },
+  { 'windwp/nvim-ts-autotag' },
 
   -- Utilities
-  use 'nvim-lua/plenary.nvim'
+  { 'nvim-lua/plenary.nvim' },
 
   -- Telescope
-  use 'nvim-telescope/telescope.nvim'
-  use 'nvim-telescope/telescope-file-browser.nvim'
+  { 'nvim-telescope/telescope.nvim' },
+  { 'nvim-telescope/telescope-file-browser.nvim' },
 
   -- Colors
-  use 'norcalli/nvim-colorizer.lua'
+  { 'norcalli/nvim-colorizer.lua' },
 
   -- Git
-  use 'lewis6991/gitsigns.nvim'
-  use {
-    'TimUntersberger/neogit',
-    requires = {
-      'sindrets/diffview.nvim'
-    }
-  }
-  use { 'akinsho/git-conflict.nvim', tag = 'v1.0.0' }
+  { 'sindrets/diffview.nvim' },
+  { 'lewis6991/gitsigns.nvim' },
+
 
   -- Auto session
-  use 'rmagatti/auto-session'
+  { 'rmagatti/auto-session' },
 
   -- Markdown viewer
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  })
+  { "iamcco/markdown-preview.nvim",
+    build = function() vim.fn["mkdp#util#install"]() end,
+  }
 
-end)
+};
+
+lazy.setup(plugins)
