@@ -70,6 +70,8 @@ local plugins = {
   { 'sindrets/diffview.nvim' },
   { 'lewis6991/gitsigns.nvim' },
 
+  -- Github copilot
+  { 'zbirenbaum/copilot.lua' },
 
   -- Auto session
   { 'rmagatti/auto-session' },
