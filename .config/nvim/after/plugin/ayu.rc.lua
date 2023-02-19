@@ -1,6 +1,11 @@
 local status, ayu = pcall(require, 'ayu')
 if (not status) then return end
 
+local status2, utils = pcall(require, 'utils')
+if (not status2) then return end
+
+local highlight = utils.highlight
+
 ayu.setup({
   mirage = true,
 })
@@ -10,22 +15,30 @@ ayu.colorscheme()
 local colors = {
   red = '#e95678',
   yellow = '#f7bb3b',
-  cyan = '#36d0e0',
+  cyan = '#5CCFE6',
   purple = '#CBA6F7',
 }
 
 -- Original: #262335
 -- New: #1F2430
-vim.cmd [[highlight Normal guibg=none]]
-vim.cmd [[highlight SignColumn guibg=none]]
-vim.cmd [[highlight CursorLine guibg=none gui=bold]]
-vim.cmd [[highlight CursorLineNr guibg=none gui=bold]]
-vim.cmd [[highlight LineNr guifg=#5CCFE6]]
+highlight('Normal', { 'guibg' }, { 'none' })
+highlight('SignColumn', { 'guibg' }, { 'none' })
+highlight('CursorLine', { 'guibg', 'gui' }, { 'none', 'bold' })
+highlight('CursorLineNr', { 'guibg', 'gui' }, { 'none', 'bold' })
+highlight('LineNr', { 'guifg' }, { colors.cyan })
 
-vim.cmd(string.format([[ hi CodeActionNumber guibg=none guifg=%s ]], colors.yellow))
-vim.cmd(string.format([[ hi OutlineIndent guibg=none guifg=%s ]], colors.red))
-vim.cmd(string.format([[ hi SagaBorder guibg=none guifg=%s ]], colors.cyan))
+-- LSPSaga
+highlight('CodeActionNumber', { 'guibg', 'guifg' }, { 'none', colors.yellow })
+highlight('OutlineIndent', { 'guibg', 'guifg' }, { 'none', colors.red })
+highlight('SagaBorder', { 'guibg', 'guifg' }, { 'none', colors.cyan })
+highlight('FinderIcon', { 'guibg', 'guifg' }, { 'none', colors.cyan })
+highlight('FinderType', { 'guibg', 'guifg' }, { 'none', colors.purple })
+highlight('FinderSelection', { 'guibg', 'guifg', 'gui' }, { 'none', colors.cyan, 'bold' })
 
-vim.cmd(string.format([[ hi FinderIcon guibg=none guifg=%s ]], colors.cyan))
-vim.cmd(string.format([[ hi FinderType guibg=none guifg=%s ]], colors.purple))
-vim.cmd(string.format([[ hi FinderSelection guibg=none guifg=%s gui=bold ]], colors.cyan))
+-- Telescope
+highlight('TelescopeBorder', { 'guibg', 'guifg' }, { 'none', colors.cyan })
+highlight('TelescopePromptBorder', { 'guibg', 'guifg' }, { 'none', colors.cyan })
+highlight('TelescopePromptTitle', { 'guibg', 'guifg' }, { 'none', colors.yellow })
+highlight('TelescopePreviewTitle', { 'guibg', 'guifg' }, { 'none', colors.yellow })
+highlight('TelescopeResultsTitle', { 'guibg', 'guifg' }, { 'none', colors.yellow })
+highlight('TelescopeSelectionCaret', { 'guibg', 'guifg' }, { 'none', colors.yellow })
