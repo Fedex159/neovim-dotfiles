@@ -36,12 +36,17 @@ telescope.setup {
         }
       },
       git_status = false,
+    },
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {
+      }
     }
   }
 }
 
 
 telescope.load_extension('file_browser')
+telescope.load_extension("ui-select")
 
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', ';f', '<cmd>lua require("telescope.builtin").find_files({ no_ignore = false, hidden = true })<cr>',

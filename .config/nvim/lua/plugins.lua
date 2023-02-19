@@ -19,9 +19,7 @@ end
 
 local plugins = {
   -- Theme
-  { 'nvim-tree/nvim-web-devicons',
-    commit = 'd7f598ed63a66d6dce1117c61b0d5ba71b7c45e8'
-  },
+  { 'nvim-tree/nvim-web-devicons' },
   { 'Shatur/neovim-ayu' },
 
   -- Lsp and completion
@@ -62,6 +60,7 @@ local plugins = {
   -- Telescope
   { 'nvim-telescope/telescope.nvim' },
   { 'nvim-telescope/telescope-file-browser.nvim' },
+  { 'nvim-telescope/telescope-ui-select.nvim' },
 
   -- Colors
   { 'norcalli/nvim-colorizer.lua' },
