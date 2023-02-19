@@ -49,6 +49,12 @@ bufferline.setup {
     hint = {
       bg = colors.bg,
     },
+    diagnostic = {
+      bg = colors.bg,
+    },
+    info = {
+      bg = colors.bg,
+    },
   },
 }
 
