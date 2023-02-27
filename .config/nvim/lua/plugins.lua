@@ -68,6 +68,9 @@ local plugins = {
   -- Git
   { 'sindrets/diffview.nvim' },
   { 'lewis6991/gitsigns.nvim' },
+  { 'akinsho/git-conflict.nvim',
+    version = 'v1.0.0'
+  },
 
   -- Github copilot
   { 'zbirenbaum/copilot.lua' },
