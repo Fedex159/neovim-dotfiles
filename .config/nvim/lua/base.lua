@@ -34,8 +34,8 @@ vim.opt.relativenumber = true
 
 -- Turn off paste mode when leaving insert
 vim.api.nvim_create_autocmd('InsertLeave', {
-  pattern = '*',
-  command = "set nopaste"
+	pattern = '*',
+	command = "set nopaste"
 })
 
 -- Add asterisks in block comments

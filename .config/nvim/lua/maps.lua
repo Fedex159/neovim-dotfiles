@@ -30,10 +30,10 @@ keymap.set('', 'sj', '<C-w>j')
 keymap.set('', 'sl', '<C-w>l')
 
 -- Resise window
-keymap.set('n', '<C-A>', '<C-w><')
-keymap.set('n', '<C-D>', '<C-w>>')
-keymap.set('n', '<C-W>', '<C-w>+')
-keymap.set('n', '<C-S>', '<C-w>-')
+keymap.set('n', '<A-S-left>', '<C-w><')
+keymap.set('n', '<A-S-right>', '<C-w>>')
+keymap.set('n', '<A-S-up>', '<C-w>+')
+keymap.set('n', '<A-S-down>', '<C-w>-')
 
 -- Move lines
 keymap.set('v', '<S-down>', ":m '>+1<CR>gv=gv", { noremap = true })
