@@ -5,6 +5,12 @@ saga.setup({
   ui = {
     winblend = 10,
     border = 'rounded',
+    colors = {
+      normal_bg = "NONE",
+    }
+  },
+  beacon = {
+    enable = false,
   }
 })
 
@@ -18,5 +24,6 @@ vim.keymap.set('n', 'ga', '<Cmd>Lspsaga code_action<cr>', opts)
 vim.keymap.set('n', 'gt', '<Cmd>Lspsaga term_toggle<cr>', opts)
 vim.keymap.set('t', '<C-t>', [[<C-\><C-n><cmd>Lspsaga term_toggle<CR>]], opts)
 vim.keymap.set('n', '<Leader>o', '<Cmd>Lspsaga outline<cr>', opts)
+vim.keymap.set('n', '<Leader>g', '<Cmd>Lspsaga goto_definition<cr>', opts)
 
 vim.keymap.set('t', '<C-s>', [[<C-\><C-n>]], opts)
