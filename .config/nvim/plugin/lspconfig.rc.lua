@@ -72,6 +72,10 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true
 }
 
+capabilities.textDocument.callHierarchy = {
+  dynamicRegistration = true,
+}
+
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   filetypes = {
