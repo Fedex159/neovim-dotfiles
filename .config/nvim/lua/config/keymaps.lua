@@ -1,7 +1,11 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
+local Util = require("lazyvim.util")
+local utils = require("utils")
+
 local keymap = vim.keymap
+local getTermOpts = utils.getTermOpts
 
 -- Reset original
 keymap.del("n", "<leader>w-")
@@ -10,6 +14,20 @@ keymap.del("n", "<C-Up>")
 keymap.del("n", "<C-Down>")
 keymap.del("n", "<C-Left>")
 keymap.del("n", "<C-Right>")
+keymap.del("n", "<leader>gg")
+keymap.del("n", "<leader>gG")
+keymap.del("n", "<leader>ft")
+keymap.del("n", "<leader>fT")
+
+-- stylua: ignore start
+-- Lazygit
+keymap.set("n", "<leader>gg", function() Util.float_term({ "lazygit" }, getTermOpts({ disableEsc = true, addCwd = true })) end, { desc = "Lazygit (root dir)" })
+keymap.set("n", "<leader>gG", function() Util.float_term({ "lazygit" }, getTermOpts({ disableEsc = true })) end, { desc = "Lazygit (cwd)" })
+
+-- Terminal
+keymap.set("n", "<leader>ft", function() Util.float_term(nil, getTermOpts({ addCwd = true })) end, { desc = "Terminal (root dir)" })
+keymap.set("n", "<leader>fT", function() Util.float_term(nil, getTermOpts()) end, { desc = "Terminal (cwd)" })
+-- stylua: ignore end
 
 -- Do not yank with x
 keymap.set("n", "x", '"_x')
