@@ -71,6 +71,10 @@ keymap.set("n", "<Tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Tab" })
 keymap.set("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous Tab" })
 
 -- Diffview
-vim.keymap.set("n", "<leader>dv", ":DiffviewOpen<Return>", { silent = true })
-vim.keymap.set("n", "<leader>df", ":DiffviewFileHistory %<Return>", { silent = true })
-vim.keymap.set("n", "<leader>dc", ":DiffviewClose<Return>", { silent = true })
+keymap.set("n", "<leader>dv", ":DiffviewOpen<Return>", { silent = true })
+keymap.set("n", "<leader>df", ":DiffviewFileHistory %<Return>", { silent = true })
+keymap.set("n", "<leader>dc", ":DiffviewClose<Return>", { silent = true })
+
+-- Quick replace
+keymap.set("n", "<leader>cx", "*``cgn", { desc = "Quick replace foward" })
+keymap.set("n", "<leader>cX", "*``cgN", { desc = "Quick replace backward" })
