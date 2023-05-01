@@ -5,3 +5,6 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   pattern = "*",
   command = "set nopaste",
 })
+
+vim.cmd([[ highlight CursorLine guibg=none gui=bold ]])
+vim.cmd([[ highlight CursorLineNr guibg=none gui=bold ]])
