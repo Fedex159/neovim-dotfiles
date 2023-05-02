@@ -2,8 +2,10 @@ return {
   "neovim/nvim-lspconfig",
   init = function()
     local keys = require("lazyvim.plugins.lsp.keymaps").get()
-    keys[#keys + 1] =
-      { "gr", "<cmd>lua require('telescope.builtin').lsp_references({ show_line=false })<cr>", desc = "References" }
+  -- stylua: ignore start
+    keys[#keys + 1] = { "gr", "<cmd>lua require('telescope.builtin').lsp_references({ show_line=false })<cr>", desc = "References" }
+    keys[#keys + 1] = { "gd", "<cmd>lua require('telescope.builtin').lsp_definitions({ show_line=false, file_ignore_patterns={'./node_modules/*'} })<cr>", desc = "Goto Definition", has = "definition" }
+    -- stylua: ignore end
   end,
   dependencies = { "jose-elias-alvarez/typescript.nvim" },
   opts = {
