@@ -13,7 +13,6 @@ opt.laststatus = 2
 opt.path:append({ "**" })
 opt.scrolloff = 10
 opt.shell = "zsh"
-opt.title = true
 opt.wildignore:append({ "*/node_modules/* " })
 
 vim.api.nvim_create_autocmd("InsertLeave", {
