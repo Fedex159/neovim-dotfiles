@@ -4,7 +4,7 @@ return {
     local keys = require("lazyvim.plugins.lsp.keymaps").get()
   -- stylua: ignore start
     keys[#keys + 1] = { "gr", "<cmd>lua require('telescope.builtin').lsp_references({ show_line=false })<cr>", desc = "References" }
-    keys[#keys + 1] = { "gd", "<cmd>lua require('telescope.builtin').lsp_definitions({ show_line=false, file_ignore_patterns={'./node_modules/*'} })<cr>", desc = "Goto Definition", has = "definition" }
+    keys[#keys + 1] = { "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Goto Definition", has = "definition" }
     -- stylua: ignore end
   end,
   dependencies = { "jose-elias-alvarez/typescript.nvim" },
@@ -13,6 +13,13 @@ return {
     servers = {
       ---@type lspconfig.options.tsserver
       tsserver = {
+        handlers = {
+          ---@diagnostic disable-next-line: redundant-parameter
+          ["textDocument/definition"] = function(err, result, ...)
+            result = vim.tbl_islist(result) and result[1] or result
+            vim.lsp.handlers["textDocument/definition"](err, result, ...)
+          end,
+        },
         settings = {
           typescript = {
             format = {
