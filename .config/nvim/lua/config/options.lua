@@ -3,6 +3,7 @@
 -- Add any additional options here
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
+vim.g.editorconfig = false
 
 local opt = vim.opt
 
@@ -14,8 +15,3 @@ opt.path:append({ "**" })
 opt.scrolloff = 10
 opt.shell = "zsh"
 opt.wildignore:append({ "*/node_modules/* " })
-
-vim.api.nvim_create_autocmd("InsertLeave", {
-  pattern = "*",
-  command = "set nopaste",
-})
