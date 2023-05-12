@@ -1,5 +1,6 @@
 return {
   "akinsho/git-conflict.nvim",
+  event = { "BufReadPre", "BufNewFile" },
   version = "1.1.2",
   config = function()
     require("git-conflict").setup({

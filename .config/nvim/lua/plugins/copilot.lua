@@ -1,6 +1,6 @@
 return {
   "zbirenbaum/copilot.lua",
-  lazy = false,
+  event = { "BufReadPre", "BufNewFile" },
   cmd = "Copilot",
   build = ":Copilot auth",
   opts = {
