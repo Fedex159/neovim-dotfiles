@@ -18,6 +18,10 @@ keymap.del("n", "<leader>gg")
 keymap.del("n", "<leader>gG")
 keymap.del("n", "<leader>ft")
 keymap.del("n", "<leader>fT")
+keymap.del("t", "<C-l>")
+keymap.del("t", "<C-h>")
+keymap.del("t", "<C-j>")
+keymap.del("t", "<C-k>")
 
 -- stylua: ignore start
 -- Lazygit
