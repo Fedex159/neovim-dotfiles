@@ -4,6 +4,7 @@ return {
   name = "catppuccin",
   config = function()
     require("catppuccin").setup({
+      kitty = false,
       color_overrides = {
         mocha = {
           base = "#1F2430",
