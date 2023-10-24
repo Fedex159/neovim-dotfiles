@@ -8,7 +8,7 @@ local getTermOpts = function(opts)
   }
 
   if opts and opts.addCwd then
-    termOpts.cwd = Util.get_root()
+    termOpts.cwd = Util.root.get()
   end
 
   if opts and opts.disableEsc then
