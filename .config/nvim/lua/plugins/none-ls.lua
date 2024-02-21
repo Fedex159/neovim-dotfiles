@@ -11,7 +11,7 @@ return {
         nls.builtins.diagnostics.zsh,
         nls.builtins.formatting.stylua,
         nls.builtins.formatting.shfmt,
-        nls.builtins.formatting.prettierd,
+        nls.builtins.formatting.prettier,
         require("typescript.extensions.null-ls.code-actions"),
       },
     }
