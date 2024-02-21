@@ -12,6 +12,15 @@ return {
           crust = "#000000",
         },
       },
+      highlight_overrides = {
+        mocha = function(cp)
+          return {
+            ["@tag"] = { fg = cp.lavender },
+            ["@tag.attribute.tsx"] = { fg = cp.mauve, style = { "italic" } },
+            ["@tag.builtin"] = { fg = cp.mauve },
+          }
+        end,
+      },
     })
   end,
 }
