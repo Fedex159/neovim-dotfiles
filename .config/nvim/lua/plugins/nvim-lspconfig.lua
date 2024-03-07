@@ -7,68 +7,66 @@ return {
     keys[#keys + 1] = { "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Goto Definition", has = "definition" }
     -- stylua: ignore end
   end,
-  dependencies = { "jose-elias-alvarez/typescript.nvim" },
   opts = {
-    -- make sure mason installs the server
     servers = {
-      ---@type lspconfig.options.tsserver
       tsserver = {
-        handlers = {
-          ---@diagnostic disable-next-line: redundant-parameter
-          ["textDocument/definition"] = function(err, result, ...)
-            result = vim.tbl_islist(result) and result[1] or result
-            vim.lsp.handlers["textDocument/definition"](err, result, ...)
-          end,
+        init_options = {
+          hostInfo = "neovim",
+          preferences = {
+            quotePreference = "double",
+            includeCompletionsWithSnippetText = true,
+            generateReturnInDocTemplate = true,
+            includeInlayParameterNameHints = "all",
+            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayEnumMemberValueHints = true,
+          },
         },
         settings = {
-          typescript = {
-            format = {
-              indentSize = vim.o.shiftwidth,
-              convertTabsToSpaces = vim.o.expandtab,
-              tabSize = vim.o.tabstop,
-            },
-          },
-          javascript = {
-            format = {
-              indentSize = vim.o.shiftwidth,
-              convertTabsToSpaces = vim.o.expandtab,
-              tabSize = vim.o.tabstop,
-            },
-          },
-          completions = {
-            completeFunctionCalls = true,
-          },
+          format = false,
         },
       },
       eslint = {
+        root_dir = require("lspconfig.util").root_pattern(
+          ".eslintrc",
+          ".eslintrc.js",
+          ".eslintrc.cjs",
+          ".eslintrc.yaml",
+          ".eslintrc.yml",
+          ".eslintrc.json"
+        ),
         settings = {
-          -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
+          format = {
+            enable = false,
+          },
           workingDirectory = { mode = "auto" },
         },
-      },
-    },
-    setup = {
-      tsserver = function(_, opts)
-        require("lazyvim.util").lsp.on_attach(function(client, buffer)
-          if client.name == "tsserver" then
-            -- stylua: ignore
-            vim.keymap.set("n", "<leader>co", "<cmd>TypescriptOrganizeImports<CR>", { buffer = buffer, desc = "Organize Imports" })
-            -- stylua: ignore
-            vim.keymap.set("n", "<leader>cR", "<cmd>TypescriptRenameFile<CR>", { desc = "Rename File", buffer = buffer })
-          end
-        end)
-        require("typescript").setup({ server = opts })
-        return true
-      end,
-      eslint = function()
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          callback = function(event)
-            if require("lspconfig.util").get_active_client_by_name(event.buf, "eslint") then
-              vim.cmd("EslintFixAll")
+        handlers = {
+          -- this error shows up occasionally when formatting
+          -- formatting actually works, so this will supress it
+          ["window/showMessageRequest"] = function(_, result)
+            if result.message:find("ENOENT") then
+              return vim.NIL
             end
+
+            return vim.lsp.handlers["window/showMessageRequest"](nil, result)
           end,
-        })
-      end,
+        },
+        setup = {
+          eslint = function()
+            require("lazyvim.util").lsp.on_attach(function(client)
+              if client.name == "eslint" then
+                client.server_capabilities.documentFormattingProvider = true
+              elseif client.name == "tsserver" then
+                client.server_capabilities.documentFormattingProvider = false
+              end
+            end)
+          end,
+        },
+      },
     },
   },
 }
