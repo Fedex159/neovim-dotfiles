@@ -10,6 +10,13 @@ return {
   opts = {
     servers = {
       tsserver = {
+        handlers = {
+          ---@diagnostic disable-next-line: redundant-parameter
+          ["textDocument/definition"] = function(err, result, ...)
+            result = vim.tbl_islist(result) and result[1] or result
+            vim.lsp.handlers["textDocument/definition"](err, result, ...)
+          end,
+        },
         init_options = {
           hostInfo = "neovim",
           preferences = {
