@@ -8,6 +8,7 @@ return {
     -- stylua: ignore end
   end,
   opts = {
+    inlay_hints = { enabled = false },
     servers = {
       tsserver = {
         handlers = {
