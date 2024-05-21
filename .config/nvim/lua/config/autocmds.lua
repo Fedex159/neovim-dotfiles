@@ -8,3 +8,8 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 
 vim.cmd([[ highlight CursorLine guibg=none gui=bold ]])
 vim.cmd([[ highlight CursorLineNr guibg=none gui=bold ]])
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+  pattern = ".env*",
+  command = "set filetype=sh",
+})
