@@ -1,80 +1,107 @@
 return {
   "neovim/nvim-lspconfig",
-  init = function()
-    local keys = require("lazyvim.plugins.lsp.keymaps").get()
-  -- stylua: ignore start
-    keys[#keys + 1] = { "gr", "<cmd>lua require('telescope.builtin').lsp_references({ show_line=false })<cr>", desc = "References" }
-    keys[#keys + 1] = { "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Goto Definition", has = "definition" }
-    -- stylua: ignore end
-  end,
+  version = "*",
   opts = {
     inlay_hints = { enabled = false },
     servers = {
       tsserver = {
-        handlers = {
-          ---@diagnostic disable-next-line: redundant-parameter
-          ["textDocument/definition"] = function(err, result, ...)
-            result = vim.tbl_islist(result) and result[1] or result
-            vim.lsp.handlers["textDocument/definition"](err, result, ...)
-          end,
-        },
-        init_options = {
-          hostInfo = "neovim",
-          preferences = {
-            quotePreference = "double",
-            includeCompletionsWithSnippetText = true,
-            generateReturnInDocTemplate = true,
-            includeInlayParameterNameHints = "all",
-            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-            includeInlayFunctionParameterTypeHints = true,
-            includeInlayVariableTypeHints = true,
-            includeInlayPropertyDeclarationTypeHints = true,
-            includeInlayFunctionLikeReturnTypeHints = true,
-            includeInlayEnumMemberValueHints = true,
+        enabled = false,
+      },
+      vtsls = {
+        settings = {
+          complete_function_calls = true,
+          vtsls = {
+            enableMoveToFileCodeAction = true,
+            experimental = {
+              completion = {
+                enableServerSideFuzzyMatch = true,
+              },
+            },
+          },
+          typescript = {
+            updateImportsOnFileMove = { enabled = "always" },
+            suggest = {
+              completeFunctionCalls = true,
+            },
+            inlayHints = {
+              enumMemberValues = { enabled = true },
+              functionLikeReturnTypes = { enabled = true },
+              parameterNames = { enabled = "literals" },
+              parameterTypes = { enabled = true },
+              propertyDeclarationTypes = { enabled = true },
+              variableTypes = { enabled = false },
+            },
           },
         },
-        settings = {
-          format = false,
-        },
-      },
-      eslint = {
-        root_dir = require("lspconfig.util").root_pattern(
-          ".eslintrc",
-          ".eslintrc.js",
-          ".eslintrc.cjs",
-          ".eslintrc.yaml",
-          ".eslintrc.yml",
-          ".eslintrc.json"
-        ),
-        settings = {
-          format = {
-            enable = false,
+        keys = {
+          {
+            "gd",
+            function()
+              vim.lsp.buf.definition()
+            end,
+            desc = "Goto Source Definition",
           },
-          workingDirectory = { mode = "auto" },
-        },
-        handlers = {
-          -- this error shows up occasionally when formatting
-          -- formatting actually works, so this will supress it
-          ["window/showMessageRequest"] = function(_, result)
-            if result.message:find("ENOENT") then
-              return vim.NIL
-            end
-
-            return vim.lsp.handlers["window/showMessageRequest"](nil, result)
-          end,
-        },
-        setup = {
-          eslint = function()
-            require("lazyvim.util").lsp.on_attach(function(client)
-              if client.name == "eslint" then
-                client.server_capabilities.documentFormattingProvider = true
-              elseif client.name == "tsserver" then
-                client.server_capabilities.documentFormattingProvider = false
-              end
-            end)
-          end,
+          {
+            "gr",
+            function()
+              require("telescope.builtin").lsp_references({ show_line = false })
+            end,
+            desc = "File References",
+          },
+          {
+            "<leader>co",
+            function()
+              require("vtsls").commands.organize_imports(0)
+            end,
+            desc = "Organize Imports",
+          },
+          {
+            "<leader>cM",
+            function()
+              require("vtsls").commands.add_missing_imports(0)
+            end,
+            desc = "Add missing imports",
+          },
+          {
+            "<leader>cu",
+            function()
+              require("vtsls").commands.remove_unused_imports(0)
+            end,
+            desc = "Remove unused imports",
+          },
+          {
+            "<leader>cD",
+            function()
+              require("vtsls").commands.fix_all(0)
+            end,
+            desc = "Fix all diagnostics",
+          },
+          {
+            "<leader>cV",
+            function()
+              require("vtsls").commands.select_ts_version(0)
+            end,
+            desc = "Select TS workspace version",
+          },
         },
       },
+    },
+    setup = {
+      tsserver = function()
+        -- disable tsserver
+        return true
+      end,
+      vtsls = function(_, opts)
+        -- copy typescript settings to javascript
+        opts.settings.javascript =
+          vim.tbl_deep_extend("force", {}, opts.settings.typescript, opts.settings.javascript or {})
+        local plugins = vim.tbl_get(opts.settings, "vtsls", "tsserver", "globalPlugins")
+        -- allow plugins to have a key for proper merging
+        -- remove the key here
+        if plugins then
+          opts.settings.vtsls.tsserver.globalPlugins = vim.tbl_values(plugins)
+        end
+      end,
     },
   },
 }
