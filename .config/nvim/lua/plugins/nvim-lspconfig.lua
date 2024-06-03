@@ -8,6 +8,13 @@ return {
         enabled = false,
       },
       vtsls = {
+        handlers = {
+          ---@diagnostic disable-next-line: redundant-parameter
+          ["textDocument/definition"] = function(err, result, ...)
+            result = vim.tbl_islist(result) and result[1] or result
+            vim.lsp.handlers["textDocument/definition"](err, result, ...)
+          end,
+        },
         settings = {
           complete_function_calls = true,
           vtsls = {
