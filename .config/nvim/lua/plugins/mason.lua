@@ -3,6 +3,8 @@ return {
   opts = {
     ensure_installed = {
       "prettierd",
+      "prettier",
+      "codespell",
     },
   },
 }
