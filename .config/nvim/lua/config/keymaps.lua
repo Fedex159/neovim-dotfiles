@@ -25,8 +25,8 @@ keymap.del("t", "<C-k>")
 
 -- stylua: ignore start
 -- Lazygit
-keymap.set("n", "<leader>gg", function() Util.terminal.open({ "lazygit" }, getTermOpts({ disableEsc = true, addCwd = true })) end, { desc = "Lazygit (root dir)" })
-keymap.set("n", "<leader>gG", function() Util.terminal.open({ "lazygit" }, getTermOpts({ disableEsc = true })) end, { desc = "Lazygit (cwd)" })
+keymap.set("n", "<leader>gg", function() LazyVim.lazygit({ cwd = LazyVim.root.git(), border = "rounded", margin = { bottom = 2 } }) end, { desc = "Lazygit (Root Dir)" })
+keymap.set("n", "<leader>gG", function() LazyVim.lazygit({ border = "rounded", margin = { bottom = 2 } }) end, { desc = "Lazygit (cwd)" })
 
 -- Terminal
 keymap.set("n", "<leader>ft", function() Util.terminal.open(nil, getTermOpts({ addCwd = true })) end, { desc = "Terminal (root dir)" })
@@ -80,5 +80,5 @@ keymap.set("n", "<leader>df", ":DiffviewFileHistory %<Return>", { silent = true 
 keymap.set("n", "<leader>dc", ":DiffviewClose<Return>", { silent = true })
 
 -- Quick replace
-keymap.set("n", "<leader>cx", "*``cgn", { desc = "Quick replace foward" })
+keymap.set("n", "<leader>cx", "*``cgn", { desc = "Quick replace forward" })
 keymap.set("n", "<leader>cX", "*``cgN", { desc = "Quick replace backward" })
