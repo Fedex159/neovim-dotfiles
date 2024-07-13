@@ -5,7 +5,7 @@ return {
       mappings = {
         i = {
           ["<c-e>"] = require("telescope.actions").to_fuzzy_refine,
-          ["<c-r>"] = require("telescope.actions").select_tab,
+          ["<c-w>"] = require("telescope.actions").select_tab,
         },
       },
     },
