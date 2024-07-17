@@ -8,8 +8,8 @@ local keymap = vim.keymap
 local getTermOpts = utils.getTermOpts
 
 -- Reset original
-keymap.del("n", "<leader>w-")
-keymap.del("n", "<leader>w|")
+keymap.del("n", "<leader>-")
+keymap.del("n", "<leader>|")
 keymap.del("n", "<C-Up>")
 keymap.del("n", "<C-Down>")
 keymap.del("n", "<C-Left>")
