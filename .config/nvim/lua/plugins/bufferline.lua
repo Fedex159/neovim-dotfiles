@@ -6,6 +6,7 @@ return {
     { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
   },
   opts = {
+    highlights = {},
     options = {
       always_show_bufferline = true,
       color_icons = true,
