@@ -1,11 +1,16 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
-local Util = require("lazyvim.util")
-local utils = require("utils")
-
 local keymap = vim.keymap
-local getTermOpts = utils.getTermOpts
+local terminalStyles = {
+  border = "rounded",
+  height = 0.8,
+  position = "float",
+  row = 2,
+}
+
+Snacks.config.style("lazygit", terminalStyles)
+Snacks.config.style("terminal", terminalStyles)
 
 -- Reset original
 keymap.del("n", "<leader>-")
@@ -18,20 +23,10 @@ keymap.del("n", "<leader>gg")
 keymap.del("n", "<leader>gG")
 keymap.del("n", "<leader>ft")
 keymap.del("n", "<leader>fT")
-keymap.del("t", "<C-l>")
-keymap.del("t", "<C-h>")
-keymap.del("t", "<C-j>")
-keymap.del("t", "<C-k>")
 
 -- stylua: ignore start
 -- Lazygit
-keymap.set("n", "<leader>gg", function() LazyVim.lazygit({ cwd = LazyVim.root.git(), border = "rounded", margin = { bottom = 2 } }) end, { desc = "Lazygit (Root Dir)" })
-keymap.set("n", "<leader>gG", function() LazyVim.lazygit({ border = "rounded", margin = { bottom = 2 } }) end, { desc = "Lazygit (cwd)" })
-
--- Terminal
-keymap.set("n", "<leader>ft", function() Util.terminal.open(nil, getTermOpts({ addCwd = true })) end, { desc = "Terminal (root dir)" })
-keymap.set("n", "<leader>fT", function() Util.terminal.open(nil, getTermOpts()) end, { desc = "Terminal (cwd)" })
--- stylua: ignore end
+keymap.set("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit (Root Dir)" })
 
 -- Do not yank with x
 keymap.set("n", "x", '"_x')
@@ -41,7 +36,7 @@ keymap.set("n", "+", "<C-a>")
 keymap.set("n", "-", "<C-x>")
 
 -- Select all
-keymap.set("n", "<Leader>a", "gg<S-v>G", { desc = "Select all" })
+keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
 -- New tab
 keymap.set("n", "te", ":tabedit<Return>", { silent = true })
