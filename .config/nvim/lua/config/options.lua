@@ -4,6 +4,7 @@
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
 vim.g.editorconfig = false
+vim.g.snacks_animate = false
 
 local opt = vim.opt
 

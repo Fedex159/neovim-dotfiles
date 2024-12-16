@@ -19,13 +19,6 @@ return {
             desc = "Goto Source Definition",
           },
           {
-            "gr",
-            function()
-              require("telescope.builtin").lsp_references({ show_line = false })
-            end,
-            desc = "File References",
-          },
-          {
             "<leader>co",
             LazyVim.lsp.action["source.organizeImports"],
             desc = "Organize Imports",
