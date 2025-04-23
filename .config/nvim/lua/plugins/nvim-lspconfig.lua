@@ -4,17 +4,16 @@ return {
     inlay_hints = { enabled = false },
     servers = {
       vtsls = {
-        handlers = {
-          ["textDocument/definition"] = function(err, result, ...)
-            result = vim.islist(result) and result[1] or result
-            vim.lsp.handlers["textDocument/definition"](err, result, ...)
-          end,
-        },
         keys = {
           {
             "gd",
             function()
-              vim.lsp.buf.definition()
+              local function on_list(options)
+                vim.fn.setqflist({}, " ", options)
+                vim.cmd.cfirst()
+              end
+
+              vim.lsp.buf.definition({ on_list = on_list })
             end,
             desc = "Goto Source Definition",
           },
