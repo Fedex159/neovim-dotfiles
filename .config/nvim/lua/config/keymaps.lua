@@ -2,6 +2,21 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 local keymap = vim.keymap
+
+-- Move lines
+keymap.set("v", "<S-down>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+keymap.set("v", "<S-up>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+
+-- Paste without replace
+keymap.set("v", "<leader>p", '"_dP', { desc = "Paste without replace" })
+
+-- Select all
+keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
+
+if vim.g.vscode then
+  return
+end
+
 local terminalStyles = {
   border = "rounded",
   height = 0.8,
@@ -35,9 +50,6 @@ keymap.set("n", "x", '"_x')
 keymap.set("n", "+", "<C-a>")
 keymap.set("n", "-", "<C-x>")
 
--- Select all
-keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
-
 -- New tab
 keymap.set("n", "te", ":tabedit<Return>", { silent = true })
 
@@ -57,13 +69,6 @@ keymap.set("n", "<A-S-Up>", "<cmd>resize +2<cr>", { desc = "Increase window heig
 keymap.set("n", "<A-S-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
 keymap.set("n", "<A-S-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
 keymap.set("n", "<A-S-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
-
--- Move lines
-keymap.set("v", "<S-down>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
-keymap.set("v", "<S-up>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
-
--- Paste without replace
-keymap.set("v", "<leader>p", '"_dP', { desc = "Paste without replace" })
 
 -- Tabs
 keymap.set("n", "<Tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Tab" })
