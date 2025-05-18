@@ -220,6 +220,21 @@
     },
     "when": "neovim.mode == normal"
   },
+  {
+    "key": "\\ g g",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.createTerminalEditor",
+        "workbench.action.terminal.focus",
+        {
+          "command": "workbench.action.terminal.sendSequence",
+          "args": { "text": "lazygit\u000D" }
+        }
+      ]
+    },
+    "when": "neovim.mode == normal"
+  },
 
   // File Explorer
   {
