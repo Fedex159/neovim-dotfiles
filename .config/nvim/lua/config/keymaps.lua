@@ -14,6 +14,9 @@ keymap.set("v", "<leader>p", '"_dP', { desc = "Paste without replace" })
 keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
 if vim.g.vscode then
+  keymap.set("n", "u", "<Cmd>call VSCodeNotify('undo')<CR>")
+  keymap.set("n", "<C-r>", "<Cmd>call VSCodeNotify('redo')<CR>")
+
   return
 end
 
