@@ -98,6 +98,40 @@
     "when": "!editorTextFocus && !filesExplorerFocus && !searchViewletFocus && !terminalFocus && neovim.mode != 'cmdline'"
   },
 
+  // Panel Resizing
+  {
+    "key": "alt+shift+up",
+    "command": "workbench.action.increaseViewSize",
+    "when": "sideBarFocus || panelFocus || auxiliaryBarFocus"
+  },
+  {
+    "key": "alt+shift+down",
+    "command": "workbench.action.decreaseViewSize",
+    "when": "sideBarFocus || panelFocus || auxiliaryBarFocus"
+  },
+  {
+    "key": "alt+shift+right",
+    "command": "workbench.action.increaseViewWidth",
+    "when": "sideBarFocus || filesExplorerFocus || auxiliaryBarFocus"
+  },
+  {
+    "key": "alt+shift+left",
+    "command": "workbench.action.decreaseViewWidth",
+    "when": "sideBarFocus || filesExplorerFocus || auxiliaryBarFocus"
+  },
+
+  // Panel Resizing - Cursor Chat (Auxiliary Bar)
+  {
+    "key": "alt+shift+right",
+    "command": "workbench.action.increaseViewWidth",
+    "when": "auxiliaryBarVisible && auxiliaryBarFocus"
+  },
+  {
+    "key": "alt+shift+left",
+    "command": "workbench.action.decreaseViewWidth",
+    "when": "auxiliaryBarVisible && auxiliaryBarFocus"
+  },
+
   // Coding
   {
     "key": "\\ c a",
