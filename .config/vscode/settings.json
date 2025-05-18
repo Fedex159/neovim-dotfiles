@@ -1,0 +1,246 @@
+{
+  // Neovim extension
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+
+  // Font
+  "editor.fontFamily": " JetBrainsMono NF, 'Droid Sans Mono', 'monospace', monospace",
+  "editor.fontLigatures": true,
+
+  // Editor settings
+  "editor.lineNumbers": "relative",
+  "editor.guides.bracketPairs": false,
+  "editor.guides.indentation": true,
+  "editor.guides.highlightActiveIndentation": "always",
+  "editor.guides.highlightActiveBracketPair": true,
+  "editor.guides.bracketPairsHorizontal": false,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+
+  // Quickstage
+  "quickStage.focusScmSidebarOnExit": false,
+
+  // Formatting
+  "editor.formatOnSave": true,
+  "files.associations": {
+    "*.json": "jsonc"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Editor bar settings
+  "workbench.navigationControl.enabled": false,
+  "window.commandCenter": true,
+  "window.titleBarStyle": "native",
+
+  // Catppuccin theme
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "catppuccin.colorOverrides": {
+    "mocha": {
+      "base": "#1F2430",
+      "mantle": "#1F2430",
+      "crust": "#000000"
+    }
+  },
+  "workbench.colorCustomizations": {
+    "editorBracketPairGuide.activeBackground1": "#F5C2E7",
+    "editorBracketPairGuide.activeBackground2": "#F5C2E7",
+    "editorBracketPairGuide.activeBackground3": "#F5C2E7",
+    "editorBracketPairGuide.activeBackground4": "#F5C2E7",
+    "editorBracketPairGuide.activeBackground5": "#F5C2E7",
+    "editorBracketPairGuide.activeBackground6": "#F5C2E7",
+    "editorIndentGuide.activeBackground1": "#F5C2E7",
+    "[Catppuccin Mocha]": {
+      "editor.background": "#1F2430",
+      "editor.foreground": "#cdd6f4"
+    }
+  },
+  "editor.semanticHighlighting.enabled": false,
+  "editor.semanticTokenColorCustomizations": {
+    "[Catppuccin Mocha]": {
+      "enabled": true,
+      "rules": {
+        "variable": { "foreground": "#cdd6f4" },
+        "variable.defaultlibrary": { "foreground": "#cba6f7" },
+        "class": { "foreground": "#cba6f7" },
+        "class.defaultLibrary": { "foreground": "#cba6f7" },
+        "interface": { "foreground": "#f9e2af" }
+      }
+    }
+  },
+  "editor.tokenColorCustomizations": {
+    "[Catppuccin Mocha]": {
+      "textMateRules": [
+        {
+          "scope": [
+            "variable.other.object.tsx",
+            "variable.other.object.jsx",
+            "variable.other.object.js",
+            "meta.tag variable.other.object",
+            "meta.import.tsx"
+          ],
+          "settings": {
+            "foreground": "#f9e2af"
+          }
+        },
+        {
+          "scope": ["entity.other.attribute-name.tsx"],
+          "settings": {
+            "foreground": "#CBA6F7"
+          }
+        },
+        {
+          "scope": ["variable.other.readwrite.tsx"],
+          "settings": {
+            "foreground": "#EBA0AC"
+          }
+        },
+        {
+          "scope": ["variable.other.readwrite"],
+          "settings": {
+            "foreground": "#f9e2af"
+          }
+        },
+        {
+          "scope": ["support.class.component.tsx"],
+          "settings": {
+            "foreground": "#B4BEFE"
+          }
+        },
+        {
+          "scope": ["source.tsx variable.other.constant.tsx"],
+          "settings": {
+            "foreground": "#FAB387"
+          }
+        },
+        {
+          "scope": [
+            "meta.block.tsx variable.other.constant.tsx",
+            "meta.export.default.tsx variable.other.constant.tsx"
+          ],
+          "settings": {
+            "foreground": "#CDD6F4"
+          }
+        },
+        {
+          "scope": [
+            "meta.function-call.tsx meta.embedded.expression.tsx !meta.var.expr.tsx !meta.block.tsx !meta.arrow.tsx entity.name.function"
+          ],
+          "settings": {
+            "foreground": "#FAB387"
+          }
+        },
+        {
+          "scope": [
+            "meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.embedded.expression.tsx entity.name.function.tsx"
+          ],
+          "settings": {
+            "foreground": "#89B4FA"
+          }
+        },
+        {
+          "scope": [
+            "meta.function-call.tsx meta.var.expr.tsx meta.block.tsx meta.arrow.tsx entity.name.function.tsx"
+          ],
+          "settings": {
+            "foreground": "#89DCEB"
+          }
+        },
+        {
+          "scope": ["punctuation.definition.template-expression.begin.tsx"],
+          "settings": {
+            "foreground": "#F5C2E7"
+          }
+        },
+        {
+          "scope": ["punctuation.definition.template-expression.end.tsx"],
+          "settings": {
+            "foreground": "#F5C2E7"
+          }
+        },
+        {
+          "scope": [
+            "meta.template.expression.tsx variable.other.readwrite.tsx"
+          ],
+          "settings": {
+            "foreground": "#CDD6F4"
+          }
+        },
+        {
+          "scope": ["variable.other.property.tsx"],
+          "settings": {
+            "foreground": "#B4BEFE"
+          }
+        },
+        {
+          "scope": ["keyword.control.export.tsx"],
+          "settings": {
+            "foreground": "#89dceb"
+          }
+        },
+        {
+          "scope": ["variable.other.constant.ts"],
+          "settings": {
+            "foreground": "#f9e2af"
+          }
+        },
+        {
+          "scope": ["variable.other.readwrite.ts"],
+          "settings": {
+            "foreground": "#B4BEFF"
+          }
+        },
+        {
+          "scope": ["entity.name.tag.tsx"],
+          "settings": {
+            "foreground": "#CBA6F7"
+          }
+        },
+        {
+          "scope": ["entity.name.type.tsx"],
+          "settings": {
+            "foreground": "#f2cdcd"
+          }
+        },
+        {
+          "scope": ["variable.object.property.tsx"],
+          "settings": {
+            "foreground": "#B4BEFF"
+          }
+        },
+        {
+          "scope": ["support.type.primitive.tsx"],
+          "settings": {
+            "foreground": "#f9e2af"
+          }
+        },
+        {
+          "scope": ["meta.object-literal.key.tsx"],
+          "settings": {
+            "foreground": "#B4BEFF"
+          }
+        }
+      ]
+    }
+  },
+  "catppuccin.bracketMode": "monochromatic",
+
+  // Tailwind
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    "tw`([^`]*)", // tw`...`
+    "tw\\.[^`]+`([^`]*)`", // tw.xxx<xxx>`...`
+    "tw\\(.*?\\).*?`([^`]*)", // tw(Component)<xxx>`...`
+    "clsx`([^`]*)`"
+  ],
+  "tailwindCSS.colorDecorators": true
+}
