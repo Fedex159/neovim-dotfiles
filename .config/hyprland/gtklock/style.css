@@ -1,0 +1,33 @@
+window {
+  background-image: url("../ml4w/cache/blurred_wallpaper.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: black;
+}
+
+#window-box {
+  padding: 40px 64px;
+  border: 2px solid #a3c9fe;
+  border-radius: 10px;
+  box-shadow: #a3c9fe 0px 0px 12px;
+  background-color: alpha(#000, 0.5);
+}
+
+#clock-label {
+  color: white;
+  font-size: 80px;
+}
+
+#input-label {
+  font-size: 0;
+}
+
+#input-field {
+  margin-left: 80px;
+  border-radius: 16px;
+}
+
+#unlock-button {
+  opacity: 0;
+}
